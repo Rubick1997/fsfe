@@ -10,7 +10,8 @@
   <script>
     let ws;
     const proto = window.location.protocol === "https:" ? "wss" : "ws";
-    ws = new WebSocket(`${proto}://${window.location.host}`);
+    const domain = window.location.host.replace(/^www\./, "");
+    ws = new WebSocket(`${proto}://${domain}`);
 
     ws.onmessage = function (event) {
       console.log(event.data);
